@@ -6,11 +6,13 @@ import api from "../../utils/api";
 export const ViewService = () => {
     const {id} = useParams();
     const [error, setError] = useState("")
-    const [service, setService] = useState();
+    const [service, setService] = useState({});
 
     const getService = async () => {
         try {
-            setService((await api.get(`/master/${id}`)).data);
+            const response = await api.get(`/master/${id}`);
+            setService(response.data);
+                                
         } catch (error) {
             setError(error.response?.message || error.message);
         }
