@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-dark-base: #2a2a50;
+    --letter-color:  #efefff;
+    --dirty-bg: #bfffe6;
+    --special-ac:  	#ebd999;
+    background-color: var(--bg-dark-base);
+    color: var(--letter-color);
+}
+
+.button-nav, .button{
+    @apply m-2 pt-1 pb-1 pl-2 pr-2 min-w-20 text-center
+}
+
+.button{
+    @apply border-[var(--special-ac)] border-2
+}
+
+.button-nav{
+    @apply border-stone-900 border-b-[var(--special-ac)] border-2
+}
+
+.button-nav:hover, .button:hover{
+    @apply bg-[var(--special-ac)] text-stone-800 pl-2 pr-2 h-fit border-stone-800 border-2 cursor-pointer
+}
+
+.form-basic{
+    fieldset{
+        @apply border p-4 border-[var(--special-ac)]
+    }
+    legend{
+        @apply p-1 text-[var(--special-ac)]
+    }
+    .field-group{
+        @apply flex flex-col
+    }
+    input {
+        @apply border-[var(--special-ac)] border-2 p-1
+    }
+    select {
+        @apply bg-[var(--bg-dark-base)]
+    }
+}
