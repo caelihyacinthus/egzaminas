@@ -24,10 +24,10 @@ public class CarMasterController {
         this.carMasterService = carMasterService;
     }
 
-//    @GetMapping("/master")
-//    public ResponseEntity<List<CarMaster>> getAllMaster() {
-//        return ResponseEntity.ok(carMasterService.findAllCarMasters());
-//    }
+    @GetMapping("/masterall")
+    public ResponseEntity<List<CarMaster>> getAllMaster() {
+        return ResponseEntity.ok(carMasterService.findAllCarMasters());
+    }
 
     @GetMapping("/master/{id}")
     public ResponseEntity<CarMaster> getMaster(@PathVariable long id) {
