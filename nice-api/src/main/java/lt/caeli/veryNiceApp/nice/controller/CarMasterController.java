@@ -1,6 +1,7 @@
 package lt.caeli.veryNiceApp.nice.controller;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lt.caeli.veryNiceApp.nice.dto.CarMasterMapper;
 import lt.caeli.veryNiceApp.nice.dto.RequestCarMasterDTO;
 import lt.caeli.veryNiceApp.nice.model.CarMaster;
@@ -23,10 +24,10 @@ public class CarMasterController {
         this.carMasterService = carMasterService;
     }
 
-    @GetMapping("/master")
-    public ResponseEntity<List<CarMaster>> getAllMaster() {
-        return ResponseEntity.ok(carMasterService.findAllCarMasters());
-    }
+//    @GetMapping("/master")
+//    public ResponseEntity<List<CarMaster>> getAllMaster() {
+//        return ResponseEntity.ok(carMasterService.findAllCarMasters());
+//    }
 
     @GetMapping("/master/{id}")
     public ResponseEntity<CarMaster> getMaster(@PathVariable long id) {
@@ -36,13 +37,13 @@ public class CarMasterController {
 
     }
 
-//    @GetMapping("/master")
-//    public ResponseEntity<List<CarMaster>> getAllMasterPage(@RequestParam(defaultValue = "10") @Min(value = 1) int size, @RequestParam(defaultValue = "1") @Min(value = 1) int page) {
-//        return ResponseEntity.ok(carMasterService.findAllCarMasterPage(size, page)
-//            .stream()
-//            .toList()
-//        );
-//    }
+    @GetMapping("/master")
+    public ResponseEntity<List<CarMaster>> getAllMasterPage(@RequestParam(defaultValue = "12") @Min(value = 1) int size, @RequestParam(defaultValue = "1") @Min(value = 1) int page) {
+        return ResponseEntity.ok(carMasterService.findAllCarMasterPage(size, page)
+            .stream()
+            .toList()
+        );
+    }
 
     @PostMapping("/master")
     public ResponseEntity<CarMaster> addBook(@Valid @RequestBody RequestCarMasterDTO carMasterDTO) {
