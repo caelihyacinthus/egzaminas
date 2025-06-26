@@ -3,9 +3,11 @@ import {useState} from "react";
 import {useAuth} from "../../context/AuthContext.jsx";
 import {Error} from "../../components/Error.jsx";
 import api from "../../utils/api.js";
+import { useNavigate } from "react-router";
 
 export const AddService = () => {
     const [error, setError] = useState("");
+   const navigate = useNavigate();
 
  const {
     register,
@@ -20,7 +22,10 @@ export const AddService = () => {
 
     const onSubmit = async (data) => {
         try {
-            await api.post(`/master`, data.name);
+            await api.post(`/master`, {...data});
+            reset();
+            alert("service added!");
+            navigate("/services");
         } catch (error) {
             console.log(error); 
             setError(error.response?.data?.message ?? error.message)

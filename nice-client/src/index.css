@@ -46,3 +46,12 @@
         @apply bg-[var(--bg-dark-base)]
     }
 }
+
+.view{
+    fieldset{
+        @apply border p-4 border-[var(--special-ac)]
+    }
+    legend{
+        @apply p-1 text-[var(--special-ac)]
+    }
+}

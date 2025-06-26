@@ -18,11 +18,12 @@ export const MainLayout = () => {
           </div>
           <div>
             {localStorage.getItem("user") && (
+              <div className="flex items-baseline"><p>{JSON.parse(localStorage.getItem("user")).username}</p>
               <div className="button-nav">
                 <button onClick={logout} className="">
                   Logout
                 </button>
-              </div>
+              </div></div>
             )}
             {!localStorage.getItem("user") && (
               <div className="button-nav">

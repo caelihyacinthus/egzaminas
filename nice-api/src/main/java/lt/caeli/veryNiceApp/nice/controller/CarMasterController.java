@@ -1,7 +1,6 @@
 package lt.caeli.veryNiceApp.nice.controller;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Min;
 import lt.caeli.veryNiceApp.nice.dto.CarMasterMapper;
 import lt.caeli.veryNiceApp.nice.dto.RequestCarMasterDTO;
 import lt.caeli.veryNiceApp.nice.model.CarMaster;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -26,6 +26,14 @@ public class CarMasterController {
     @GetMapping("/master")
     public ResponseEntity<List<CarMaster>> getAllMaster() {
         return ResponseEntity.ok(carMasterService.findAllCarMasters());
+    }
+
+    @GetMapping("/master/{id}")
+    public ResponseEntity<CarMaster> getMaster(@PathVariable long id) {
+        Optional<CarMaster> carOp = carMasterService.findCarMasterById(id);
+
+        return carOp.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
+
     }
 
 //    @GetMapping("/master")

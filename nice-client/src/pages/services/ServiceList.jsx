@@ -48,7 +48,7 @@ export const ServiceList = () => {
         <div className="flex flex-col items-center gap-8 p-8">
             <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center">
                 {services?.map(service => (
-                    <ServiceCard key={service.id} service={service} getSErvicePage={getServicePage} currentPage={currentPage} pageSize={pageSize} />
+                    <ServiceCard key={service.id} service={service} getServicePage={getServicePage} currentPage={currentPage} pageSize={pageSize} />
                 ))}
             </ul>
             <div className="">

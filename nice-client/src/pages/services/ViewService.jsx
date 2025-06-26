@@ -1,33 +1,32 @@
-import api from "../../utils/api.js";
-import {ServiceCard} from "../../components/ServiceCard.jsx";
-import {Error} from "../../components/Error.jsx";
-import {useNavigate} from "react-router";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Error } from "../../components/Error.jsx";
+import api from "../../utils/api";
 
 export const ViewService = () => {
+    const {id} = useParams();
+    const [error, setError] = useState("")
+    const [service, setService] = useState();
 
-   const [books, setBooks] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize, setPageSize] = useState(12);
-    const [error, setError] = useState();
-    const navigate = useNavigate();
-
-const getBookPage = async (size, page) => {
+    const getService = async () => {
         try {
-            const response = await api.get(`/master?size=${size}&page=${page}`)
-            setBooks(response.data)
+            setService((await api.get(`/master/${id}`)).data);
         } catch (error) {
-            if (error.response.status === 401) {
-                setError("");
-                navigate("/login");
-            } else {
-                setError(error.response?.data?.message || error.message)
-            }
+            setError(error.response?.message || error.message);
         }
     }
 
+    useEffect(() => {
+        getService()
+    }, []);
+
     return (
-        <div className="grid place-items-center h-100">
-            <p>Not implemented :c</p>
-        </div>
-    )
+      <div className="grid place-items-center h-100 view">
+        <fieldset>
+            <legend>technician</legend>
+            <p>name: {service.name}</p>
+        </fieldset>
+        <Error error={error} isHidden={!error} />
+      </div>
+    );
 }

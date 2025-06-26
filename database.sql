@@ -60,3 +60,5 @@ CREATE TABLE `reviews` (
   CONSTRAINT `FK6a9k6xvev80se5rreqvuqr7f9` FOREIGN KEY (`car_id`) REFERENCES `car_meistras` (`id`),
   CONSTRAINT `reviews_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 );
+
+insert into car_meistras(name, workplace_id) value ("good", 1),("bad", 1);

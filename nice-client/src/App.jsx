@@ -32,7 +32,7 @@ const App = () => {
                 }>
                     <Route index element={<Navigate to="login" replace />} />
                     <Route path="services" element={<ServiceList/>} />
-                    <Route path="services/view/:id" element={<ViewService />} />
+                    <Route path="services/view/:id" element={<ViewService/>} />
                     <Route path="addservices" element={<AddService/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
