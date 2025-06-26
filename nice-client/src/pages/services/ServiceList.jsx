@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
-import api from "../../utils/api";
-import {BookCard} from "../../components/BookCard.jsx";
+import api from "../../utils/api.js";
+import {ServiceCard} from "../../components/ServiceCard.jsx";
 import {Error} from "../../components/Error.jsx";
 import {useNavigate} from "react-router";
 
-export const BookList = () => {
+export const ServiceList = () => {
     const [books, setBooks] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(12);
@@ -13,8 +13,10 @@ export const BookList = () => {
 
     const getBookPage = async (size, page) => {
         try {
-            const response = await api.get(`/books?size=${size}&page=${page}`)
+            const response = await api.get(`/master?size=${size}&page=${page}`)
             setBooks(response.data)
+            console.log(books);
+            
         } catch (error) {
             if (error.response.status === 401) {
                 setError("");
@@ -47,7 +49,7 @@ export const BookList = () => {
         <div className="flex flex-col items-center gap-8 p-8">
             <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center">
                 {books?.map(book => (
-                    <BookCard key={book.id} book={book} getBookPage={getBookPage} currentPage={currentPage} pageSize={pageSize} />
+                    <ServiceCard key={book.id} book={book} getBookPage={getBookPage} currentPage={currentPage} pageSize={pageSize} />
                 ))}
             </ul>
             <div className="">

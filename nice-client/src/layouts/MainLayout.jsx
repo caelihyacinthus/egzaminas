@@ -7,8 +7,14 @@ export const MainLayout = () => {
     return (
       <div className="">
         <nav className="flex justify-between w-full fixed top-0 bg-stone-900 h-fit border-b-[var(--special-ac)] border-b-4">
-          <div className="button-nav">
-            <NavLink to="/books">Books</NavLink>
+          <div className="flex">
+          <div className="button-nav mr-4">
+            <NavLink to="/services">Services</NavLink>
+          </div>
+          <div className="button-nav mr-4">
+            {JSON.parse(localStorage.getItem("user")).roles.includes("ROLE_ADMIN")
+               && <NavLink to="/addservices">Add service</NavLink>}
+          </div>
           </div>
           <div>
             {localStorage.getItem("user") && (

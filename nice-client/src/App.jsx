@@ -1,12 +1,13 @@
 import {BrowserRouter, Navigate, Route, Routes} from "react-router";
 import {MainLayout} from "./layouts/MainLayout.jsx";
-import {BookList} from "./pages/books/BookList.jsx";
+import {ServiceList} from "./pages/services/ServiceList.jsx";
 import {AuthGuard} from "./components/AuthGuard.jsx";
 import {Login} from "./pages/auth/Login.jsx";
 import {Register} from "./pages/auth/Register.jsx";
 import {AuthProvider} from "./context/AuthContext.jsx";
-import {ViewBook} from "./pages/books/ViewBook.jsx";
+import {ViewService} from "./pages/services/ViewService.jsx";
 import { NotFound } from "./components/NotFound.jsx";
+import {AddService} from "./pages/services/AddService.jsx";
 
 const App = () => {
     return (
@@ -30,8 +31,9 @@ const App = () => {
                     </AuthGuard>
                 }>
                     <Route index element={<Navigate to="login" replace />} />
-                    <Route path="books" element={<BookList/>} />
-                    <Route path="books/view/:id" element={<ViewBook />} />
+                    <Route path="services" element={<ServiceList/>} />
+                    <Route path="services/view/:id" element={<ViewService />} />
+                    <Route path="addservices" element={<AddService/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
             </Routes>

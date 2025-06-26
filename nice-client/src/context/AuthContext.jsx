@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
         // Įšsaugome user info į localStorage, tam kad vėliau galėtu pasiimti axios ir šis context'as
         localStorage.setItem("user", JSON.stringify(user));
         setUser(user);
-        navigate("/books");
+        navigate("/services");
     };
 
     const register = async (username, password) => {

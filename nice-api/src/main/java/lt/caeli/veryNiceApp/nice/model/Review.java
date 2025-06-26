@@ -18,7 +18,7 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "book_id")
-    private Book book;
+    private CarMaster carMaster;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -32,12 +32,12 @@ public class Review {
         this.user = user;
     }
 
-    public Book getBook() {
-        return book;
+    public CarMaster getBook() {
+        return carMaster;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBook(CarMaster carMaster) {
+        this.carMaster = carMaster;
     }
 
     public Review(String comment) {
