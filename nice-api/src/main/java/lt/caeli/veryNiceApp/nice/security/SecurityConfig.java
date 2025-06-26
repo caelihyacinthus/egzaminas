@@ -23,7 +23,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/api/categories/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/categories/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.GET, "/api/categories/**").hasRole("USER")
+                .requestMatchers(HttpMethod.GET, "/api/master/**").hasRole("USER")
                 .anyRequest().authenticated()
             );
         return http.build();

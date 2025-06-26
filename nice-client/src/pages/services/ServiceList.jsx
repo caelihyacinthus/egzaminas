@@ -5,17 +5,16 @@ import {Error} from "../../components/Error.jsx";
 import {useNavigate} from "react-router";
 
 export const ServiceList = () => {
-    const [books, setBooks] = useState([]);
+    const [services, setService] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(12);
     const [error, setError] = useState();
     const navigate = useNavigate();
 
-    const getBookPage = async (size, page) => {
+    const getServicePage = async (size, page) => {
         try {
             const response = await api.get(`/master?size=${size}&page=${page}`)
-            setBooks(response.data)
-            console.log(books);
+            setService(response.data)
             
         } catch (error) {
             if (error.response.status === 401) {
@@ -29,7 +28,7 @@ export const ServiceList = () => {
 
     const onPageSizeChange = async (e) => {
         const pageSize = e.target.value;
-        await getBookPage(pageSize, 1)
+        await getServicePage(pageSize, 1)
         setCurrentPage(1)
         setPageSize(pageSize)
     }
@@ -37,19 +36,19 @@ export const ServiceList = () => {
     const onPaginate = async (page) => {
         if (page < 1) return
 
-        await getBookPage(pageSize, page)
+        await getServicePage(pageSize, page)
         setCurrentPage(page)
     }
 
     useEffect(() => {
-        getBookPage(pageSize, currentPage)
+        getServicePage(pageSize, currentPage)
     }, []);
 
     return (
         <div className="flex flex-col items-center gap-8 p-8">
             <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center">
-                {books?.map(book => (
-                    <ServiceCard key={book.id} book={book} getBookPage={getBookPage} currentPage={currentPage} pageSize={pageSize} />
+                {services?.map(service => (
+                    <ServiceCard key={service.id} service={service} getSErvicePage={getServicePage} currentPage={currentPage} pageSize={pageSize} />
                 ))}
             </ul>
             <div className="">

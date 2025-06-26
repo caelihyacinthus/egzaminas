@@ -32,7 +32,7 @@ create table workplace(
 create table car_meistras(
 	id bigint primary key auto_increment,
 	name varchar(100) not null,
-	workplace_id bigint not null,
+	workplace_id bigint null,
 	CONSTRAINT car_work_fk FOREIGN key (workplace_id) REFERENCES workplace(id)
 );
 
@@ -59,4 +59,4 @@ CREATE TABLE `reviews` (
   PRIMARY KEY (`id`),
   CONSTRAINT `FK6a9k6xvev80se5rreqvuqr7f9` FOREIGN KEY (`car_id`) REFERENCES `car_meistras` (`id`),
   CONSTRAINT `reviews_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-)
+);

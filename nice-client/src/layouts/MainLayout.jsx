@@ -11,10 +11,10 @@ export const MainLayout = () => {
           <div className="button-nav mr-4">
             <NavLink to="/services">Services</NavLink>
           </div>
-          <div className="button-nav mr-4">
-            {JSON.parse(localStorage.getItem("user")).roles.includes("ROLE_ADMIN")
-               && <NavLink to="/addservices">Add service</NavLink>}
-          </div>
+            {JSON.parse(localStorage.getItem("user")).roles.includes("ROLE_ADMIN") &&
+              <div className="button-nav mr-4">
+                  <NavLink to="/addservices">Add service</NavLink>
+              </div>}
           </div>
           <div>
             {localStorage.getItem("user") && (

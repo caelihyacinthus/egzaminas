@@ -21,7 +21,7 @@ public class CarMasterService {
         this.carMasterRepository = carMasterRepository;
     }
 
-    public List<CarMaster> findAllBooks() {
+    public List<CarMaster> findAllCarMasters() {
         return carMasterRepository.findAll();
     }
 
@@ -47,7 +47,6 @@ public class CarMasterService {
 
     public Page<CarMaster> findAllCarMasterPage(int size, int page) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<CarMaster> p = carMasterRepository.findAll(pageable);
         return carMasterRepository.findAll(pageable);
     }
 }

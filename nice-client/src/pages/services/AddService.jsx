@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import {NavLink} from "react-router";
 import {useState} from "react";
 import {useAuth} from "../../context/AuthContext.jsx";
 import {Error} from "../../components/Error.jsx";
@@ -7,7 +6,6 @@ import api from "../../utils/api.js";
 
 export const AddService = () => {
     const [error, setError] = useState("");
-    const { user } = useAuth();
 
  const {
     register,
